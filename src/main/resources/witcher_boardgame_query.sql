@@ -1,9 +1,9 @@
-DROP DATABASE my_game_database;
-CREATE DATABASE IF NOT EXISTS my_game_database;
-USE my_game_database;
+DROP DATABASE IF EXISTS witcher_boardgame_db;
+CREATE DATABASE IF NOT EXISTS witcher_boardgame_db;
+USE witcher_boardgame_db;
 
 -- Create the Character table
-CREATE TABLE Character (
+CREATE TABLE YourCharacter (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     origin VARCHAR(50),
@@ -27,10 +27,10 @@ CREATE TABLE Enemy (
 CREATE TABLE Event (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
-    effect VARCHAR(50),
+    effect VARCHAR(255),
     effect_power_points INT,
     effect_roll_success_points INT,
-    description VARCHAR(255)
+    description VARCHAR(255),
     image_url VARCHAR(255)
 );
 -- Create the Player table
@@ -42,7 +42,7 @@ CREATE TABLE Player (
 );
 
 -- Insert example records into the Character table
-INSERT INTO Character (name, origin, character_class, attack_points, magic_points, health_points, dice_roll_points, image_url)
+INSERT INTO YourCharacter (name, origin, character_class, attack_points, magic_points, health_points, dice_roll_points, image_url)
 VALUES
     ('Geralt', 'of Rivia', 'Warrior', 100, 40, 150, 5, 'Geralt_pixabay.jpg'),
     ('Cirilla', 'of Cintra', 'Warmage', 70, 70, 120, 6, 'Ciri_pixabay.jpg'),
@@ -66,7 +66,7 @@ VALUES
     ('Get drunk', 'PUSH_BACK', 5, 3, 'A', 'monster_pixabay.png'),
     ('Event2', 'LOSE_TURN', 5, 3, 'A', 'monster_pixabay.png'),
     ('Event4', 'ENEMY', 5, 3, 'A', 'monster_pixabay.png'),
-    ('Event1', 'GET_AD', 5, 2, 'A', 'monster_pixabay.png');
+    ('Event1', 'GET_AP', 5, 2, 'A', 'monster_pixabay.png');
 
 
 -- Insert example records into the Player table

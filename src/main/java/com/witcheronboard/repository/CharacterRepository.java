@@ -1,4 +1,7 @@
 package com.witcheronboard.repository;
 
-public interface CharacterRepository {
+import com.witcheronboard.model.YourCharacter;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CharacterRepository extends JpaRepository<YourCharacter, Integer> {
 }

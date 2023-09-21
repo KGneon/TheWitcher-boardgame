@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TheWitcherBoardGameWithJavaSpringBootAndAngularApplication {
+public class TheWitcherBoardGameApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TheWitcherBoardGameWithJavaSpringBootAndAngularApplication.class, args);
+		SpringApplication.run(TheWitcherBoardGameApplication.class, args);
 	}
 
 }

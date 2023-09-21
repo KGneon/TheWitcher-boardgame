@@ -1,4 +1,7 @@
 package com.witcheronboard.repository;
 
-public interface PlayerRepository {
+import com.witcheronboard.model.Player;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PlayerRepository extends JpaRepository<Player, Integer> {
 }

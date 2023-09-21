@@ -1,4 +1,7 @@
 package com.witcheronboard.repository;
 
-public interface EnemyRepository {
+import com.witcheronboard.model.Enemy;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface EnemyRepository extends JpaRepository<Enemy, Integer> {
 }

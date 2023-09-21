@@ -9,6 +9,7 @@ public class Event {
     @Column(nullable=false, updatable = false)
     private Integer id;
     private String name;
+    @Enumerated(EnumType.STRING)
     private EffectEnum effect;
     private Integer effectPowerPoints;
     private Integer effectRollSuccessPoints;

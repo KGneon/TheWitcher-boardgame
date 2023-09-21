@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
-public class Character implements Serializable {
+public class YourCharacter implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable=false, updatable = false)
@@ -19,7 +19,7 @@ public class Character implements Serializable {
     private Integer diceRollPoints;
     private String imageUrl;
 
-    public Character() {
+    public YourCharacter() {
     }
 
     public Integer getId() {
