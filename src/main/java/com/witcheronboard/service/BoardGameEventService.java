@@ -18,19 +18,29 @@ public interface BoardGameEventService {
     public Event getEventById(Integer id);
     public Enemy getEnemyById(Integer id);
     public Player getPlayerById(Integer id);
-    public void addCharacter(Character character);
-    public void addPlayer(Player player);
+    public YourCharacter addCharacter(YourCharacter yourCharacter);
+    public Player addPlayer(Player player);
+    public Event addEvent(Event event);
+    public Enemy addEnemy(Enemy enemy);
+    Enemy updateEnemy(Enemy enemy);
+    Event updateEvent(Event event);
+    Player updatePlayer(Player player);
+    YourCharacter updateCharacter(YourCharacter yourCharacter);
+    void deleteEnemy(Integer id);
+    void deleteEvent(Integer id);
+    void deletePlayer(Integer id);
+    void deleteCharacter(Integer id);
 
     //roll dice
     //move character (up, down, right, left)
     //meet event
-        //fight
-            //roll dice for enemy
-            //roll dice for char
-        //event
-            //change statistics
-            //move back
-        //winner price
+    //fight
+    //roll dice for enemy
+    //roll dice for char
+    //event
+    //change statistics
+    //move back
+    //winner price
     //end turn
     //switch char
     //
