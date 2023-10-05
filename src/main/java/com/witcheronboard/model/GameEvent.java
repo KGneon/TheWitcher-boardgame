@@ -3,7 +3,7 @@ package com.witcheronboard.model;
 import jakarta.persistence.*;
 
 @Entity
-public class Event {
+public class GameEvent {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(nullable=false, updatable = false)
@@ -16,7 +16,7 @@ public class Event {
     private String description;
     private String imageUrl;
 
-    public Event() {
+    public GameEvent() {
     }
 
     public Integer getId() {

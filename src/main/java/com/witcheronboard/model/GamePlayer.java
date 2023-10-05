@@ -3,7 +3,7 @@ package com.witcheronboard.model;
 import jakarta.persistence.*;
 
 @Entity
-public class Player {
+public class GamePlayer {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(nullable=false, updatable = false)
@@ -12,7 +12,7 @@ public class Player {
     private Integer gamesPlayed;
     private Integer highScore;
 
-    public Player() {
+    public GamePlayer() {
     }
 
     public Integer getId() {

@@ -1,14 +1,14 @@
 package com.witcheronboard.controller;
 
-import com.witcheronboard.model.Enemy;
-import com.witcheronboard.model.Event;
-import com.witcheronboard.model.Player;
-import com.witcheronboard.model.YourCharacter;
+import com.witcheronboard.dto.GameScoreDTO;
+import com.witcheronboard.model.GameEnemy;
+import com.witcheronboard.model.GameCharacter;
+import com.witcheronboard.model.GameEvent;
+import com.witcheronboard.model.GamePlayer;
 import com.witcheronboard.service.BoardGameEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,108 +21,113 @@ public class BoardGameController {
     BoardGameEventService boardGameEventService;
 
     // GET ALL
-    @GetMapping("/enemies")
-    public ResponseEntity<List<Enemy>> getAllEnemies() {
-        List<Enemy> enemies = boardGameEventService.getAllEnemies();
+    @GetMapping("/enemies/all")
+    public ResponseEntity<List<GameEnemy>> getEnemies() {
+        List<GameEnemy> enemies = boardGameEventService.getAllEnemies();
         return new ResponseEntity<>(enemies, HttpStatus.OK);
     }
-    @GetMapping("/events")
-    public ResponseEntity<List<Event>> getAllEvents() {
-        List<Event> events = boardGameEventService.getAllEvents();
-        return new ResponseEntity<>(events, HttpStatus.OK);
+    @GetMapping("/events/all")
+    public ResponseEntity<List<GameEvent>> getEvents() {
+        List<GameEvent> gameEvents = boardGameEventService.getAllEvents();
+        return new ResponseEntity<>(gameEvents, HttpStatus.OK);
     }
-    @GetMapping("/players")
-    public ResponseEntity<List<Player>> getAllPlayers() {
-        List<Player> players = boardGameEventService.getAllPlayers();
-        return new ResponseEntity<>(players, HttpStatus.OK);
+    @GetMapping("/players/all")
+    public ResponseEntity<List<GamePlayer>> getPlayers() {
+        List<GamePlayer> gamePlayers = boardGameEventService.getAllPlayers();
+        return new ResponseEntity<>(gamePlayers, HttpStatus.OK);
     }
-    @GetMapping("/characters")
-    public ResponseEntity<List<YourCharacter>> getAllCharacters() {
-        List<YourCharacter> characters = boardGameEventService.getAllCharacters();
+    @GetMapping("/characters/all")
+    public ResponseEntity<List<GameCharacter>> getCharacters() {
+        List<GameCharacter> characters = boardGameEventService.getAllCharacters();
         return new ResponseEntity<>(characters, HttpStatus.OK);
+    }
+    @GetMapping("/scores/all")
+    public ResponseEntity<List<GameScoreDTO>> getScores() {
+        List<GameScoreDTO> scoresDTO = boardGameEventService.getAllScores();
+        return new ResponseEntity<>(scoresDTO, HttpStatus.OK);
     }
 
     //GET ONE
     @GetMapping("/enemies/find/{id}")
-    public ResponseEntity<Enemy> getEnemyById(@PathVariable("id") Integer id) {
-        Enemy enemy = boardGameEventService.getEnemyById(id);
-        return new ResponseEntity<>(enemy, HttpStatus.OK);
+    public ResponseEntity<GameEnemy> getEnemyById(@PathVariable("id") Integer id) {
+        GameEnemy gameEnemy = boardGameEventService.getEnemyById(id);
+        return new ResponseEntity<>(gameEnemy, HttpStatus.OK);
     }
     @GetMapping("/events/find/{id}")
-    public ResponseEntity<Event> getEvnetById(@PathVariable("id") Integer id) {
-        Event event = boardGameEventService.getEventById(id);
-        return new ResponseEntity<>(event, HttpStatus.OK);
+    public ResponseEntity<GameEvent> getEvnetById(@PathVariable("id") Integer id) {
+        GameEvent gameEvent = boardGameEventService.getEventById(id);
+        return new ResponseEntity<>(gameEvent, HttpStatus.OK);
     }
     @GetMapping("/players/find/{id}")
-    public ResponseEntity<Player> getPlayerById(@PathVariable("id") Integer id) {
-        Player player = boardGameEventService.getPlayerById(id);
-        return new ResponseEntity<>(player, HttpStatus.OK);
+    public ResponseEntity<GamePlayer> getPlayerById(@PathVariable("id") Integer id) {
+        GamePlayer gamePlayer = boardGameEventService.getPlayerById(id);
+        return new ResponseEntity<>(gamePlayer, HttpStatus.OK);
     }
     @GetMapping("/characters/find/{id}")
-    public ResponseEntity<YourCharacter> getCharacterById(@PathVariable("id") Integer id) {
-        YourCharacter yourCharacter = boardGameEventService.getCharacterById(id);
-        return new ResponseEntity<>(yourCharacter, HttpStatus.OK);
+    public ResponseEntity<GameCharacter> getCharacterById(@PathVariable("id") Integer id) {
+        GameCharacter gameCharacter = boardGameEventService.getCharacterById(id);
+        return new ResponseEntity<>(gameCharacter, HttpStatus.OK);
     }
 
     //ADD NEW
     @PostMapping("/enemies/add")
-    public ResponseEntity<Enemy> addEnemy(@RequestBody Enemy enemy) {
-        Enemy newEnemy = boardGameEventService.addEnemy(enemy);
-        return new ResponseEntity<>(newEnemy, HttpStatus.CREATED);
+    public ResponseEntity<GameEnemy> addEnemy(@RequestBody GameEnemy gameEnemy) {
+        GameEnemy newGameEnemy = boardGameEventService.addEnemy(gameEnemy);
+        return new ResponseEntity<>(newGameEnemy, HttpStatus.CREATED);
     }
     @PostMapping("/events/add")
-    public ResponseEntity<Event> addEvent(@RequestBody Event event) {
-        Event newEvent = boardGameEventService.addEvent(event);
-        return new ResponseEntity<>(newEvent, HttpStatus.CREATED);
+    public ResponseEntity<GameEvent> addEvent(@RequestBody GameEvent gameEvent) {
+        GameEvent newGameEvent = boardGameEventService.addEvent(gameEvent);
+        return new ResponseEntity<>(newGameEvent, HttpStatus.CREATED);
     }
     @PostMapping("/players/add")
-    public ResponseEntity<Player> addPlayer(@RequestBody Player player) {
-        Player newPlayer = boardGameEventService.addPlayer(player);
-        return new ResponseEntity<>(newPlayer, HttpStatus.CREATED);
+    public ResponseEntity<GamePlayer> addPlayer(@RequestBody GamePlayer gamePlayer) {
+        GamePlayer newGamePlayer = boardGameEventService.addPlayer(gamePlayer);
+        return new ResponseEntity<>(newGamePlayer, HttpStatus.CREATED);
     }
     @PostMapping("/characters/add")
-    public ResponseEntity<YourCharacter> addCharacter(@RequestBody YourCharacter yourCharacter) {
-        YourCharacter newYourCharacter = boardGameEventService.addCharacter(yourCharacter);
-        return new ResponseEntity<>(newYourCharacter, HttpStatus.CREATED);
+    public ResponseEntity<GameCharacter> addCharacter(@RequestBody GameCharacter gameCharacter) {
+        GameCharacter newCharacter = boardGameEventService.addCharacter(gameCharacter);
+        return new ResponseEntity<>(newCharacter, HttpStatus.CREATED);
     }
 
     //PUT
     @PutMapping("/enemies/update")
-    public ResponseEntity<Enemy> updateEnemy(@RequestBody Enemy enemy) {
-        Enemy updateEnemy = boardGameEventService.updateEnemy(enemy);
-        return new ResponseEntity<>(updateEnemy, HttpStatus.OK);
+    public ResponseEntity<GameEnemy> updateEnemy(@RequestBody GameEnemy gameEnemy) {
+        GameEnemy updateGameEnemy = boardGameEventService.updateEnemy(gameEnemy);
+        return new ResponseEntity<>(updateGameEnemy, HttpStatus.OK);
     }
     @PutMapping("/events/update")
-    public ResponseEntity<Event> updateEvent(@RequestBody Event event) {
-        Event updateEvent = boardGameEventService.updateEvent(event);
-        return new ResponseEntity<>(updateEvent, HttpStatus.OK);
+    public ResponseEntity<GameEvent> updateEvent(@RequestBody GameEvent gameEvent) {
+        GameEvent updateGameEvent = boardGameEventService.updateEvent(gameEvent);
+        return new ResponseEntity<>(updateGameEvent, HttpStatus.OK);
     }@PutMapping("/players/update")
-    public ResponseEntity<Player> updatePlayer(@RequestBody Player player) {
-        Player updatePlayer = boardGameEventService.updatePlayer(player);
-        return new ResponseEntity<>(updatePlayer, HttpStatus.OK);
+    public ResponseEntity<GamePlayer> updatePlayer(@RequestBody GamePlayer gamePlayer) {
+        GamePlayer updateGamePlayer = boardGameEventService.updatePlayer(gamePlayer);
+        return new ResponseEntity<>(updateGamePlayer, HttpStatus.OK);
     }
     @PutMapping("/characters/update")
-    public ResponseEntity<YourCharacter> updateCharacter(@RequestBody YourCharacter character) {
-        YourCharacter updateYourCharacter = boardGameEventService.updateCharacter(character);
-        return new ResponseEntity<>(updateYourCharacter, HttpStatus.OK);
+    public ResponseEntity<GameCharacter> updateCharacter(@RequestBody GameCharacter gameCharacter) {
+        GameCharacter updateCharacter = boardGameEventService.updateCharacter(gameCharacter);
+        return new ResponseEntity<>(updateCharacter, HttpStatus.OK);
     }
 
     //DELETE
-    @PutMapping("/enemies/delete")
+    @PutMapping("/enemies/delete/{id}")
     public ResponseEntity<?> deleteEnemy(@PathVariable("id") Integer id) {
         boardGameEventService.deleteEnemy(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @PutMapping("/events/delete")
+    @PutMapping("/events/delete/{id}")
     public ResponseEntity<?> deleteEvent(@PathVariable("id") Integer id) {
         boardGameEventService.deleteEvent(id);
         return new ResponseEntity<>(HttpStatus.OK);
-    }@PutMapping("/players/delete")
+    }@PutMapping("/players/delete/{id}")
     public ResponseEntity<?> deletePlayer(@PathVariable("id") Integer id) {
         boardGameEventService.deletePlayer(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @PutMapping("/characters/delete")
+    @PutMapping("/characters/delete/{id}")
     public ResponseEntity<?> deleteCharacter(@PathVariable("id") Integer id) {
         boardGameEventService.deleteCharacter(id);
         return new ResponseEntity<>(HttpStatus.OK);

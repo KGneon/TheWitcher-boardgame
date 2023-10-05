@@ -1,35 +1,42 @@
 package com.witcheronboard.service;
 
-import com.witcheronboard.model.Enemy;
-import com.witcheronboard.model.Event;
-import com.witcheronboard.model.Player;
-import com.witcheronboard.model.YourCharacter;
+import com.witcheronboard.dto.GameScoreDTO;
+import com.witcheronboard.model.*;
+import com.witcheronboard.model.GameCharacter;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface BoardGameEventService {
 
-    public List<YourCharacter> getAllCharacters();
-    public List<Enemy> getAllEnemies();
-    public List<Event> getAllEvents();
-    public List<Player> getAllPlayers();
-    public YourCharacter getCharacterById(Integer id);
-    public Event getEventById(Integer id);
-    public Enemy getEnemyById(Integer id);
-    public Player getPlayerById(Integer id);
-    public YourCharacter addCharacter(YourCharacter yourCharacter);
-    public Player addPlayer(Player player);
-    public Event addEvent(Event event);
-    public Enemy addEnemy(Enemy enemy);
-    Enemy updateEnemy(Enemy enemy);
-    Event updateEvent(Event event);
-    Player updatePlayer(Player player);
-    YourCharacter updateCharacter(YourCharacter yourCharacter);
+    List<GameCharacter> getAllCharacters();
+    List<GameEnemy> getAllEnemies();
+    List<GameEvent> getAllEvents();
+    List<GamePlayer> getAllPlayers();
+    List<GameScoreDTO> getAllScores();
+
+    GameCharacter getCharacterById(Integer id);
+    GameEvent getEventById(Integer id);
+    GameEnemy getEnemyById(Integer id);
+    GamePlayer getPlayerById(Integer id);
+    GameScoreDTO getScoreById(Integer id);
+
+    GameCharacter addCharacter(GameCharacter yourCharacter);
+    GamePlayer addPlayer(GamePlayer gamePlayer);
+    GameEvent addEvent(GameEvent gameEvent);
+    GameEnemy addEnemy(GameEnemy gameEnemy);
+    GameScoreDTO addScore(GameScoreDTO gameScoreDTO);
+
+    GameEnemy updateEnemy(GameEnemy gameEnemy);
+    GameEvent updateEvent(GameEvent gameEvent);
+    GamePlayer updatePlayer(GamePlayer gamePlayer);
+    GameCharacter updateCharacter(GameCharacter yourCharacter);
+    GameScoreDTO updateScore(GameScoreDTO gameScoreDTO);
+
     void deleteEnemy(Integer id);
     void deleteEvent(Integer id);
     void deletePlayer(Integer id);
     void deleteCharacter(Integer id);
+    void deleteScore(Integer id);
 
     //roll dice
     //move character (up, down, right, left)

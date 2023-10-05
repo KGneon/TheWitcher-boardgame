@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 @Entity
-public class Enemy {
+public class GameEnemy {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
@@ -15,7 +15,7 @@ public class Enemy {
     private String powerType;
     private String imageUrl;
 
-    public Enemy() {
+    public GameEnemy() {
     }
 
     public Integer getId() {
