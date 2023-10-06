@@ -98,4 +98,18 @@ public class GameScoreDTO {
         gameScoreDTO.setGameDate(gameScore.getGameDate());
         return gameScoreDTO;
     }
+
+    public static GameScore createEntity(GameScoreDTO gameScoreDTO) {
+        GameScore gameScore = new GameScore();
+        gameScore.setId(gameScoreDTO.getId());
+        gameScore.setPlayerId(gameScoreDTO.getPlayerId());
+        gameScore.setPlayerName(gameScoreDTO.getPlayerName());
+        gameScore.setCharacterName(gameScoreDTO.getCharacterName());
+        gameScore.setGamesPlayed(gameScoreDTO.getGamesPlayed());
+        gameScore.setHighScore(gameScoreDTO.getHighScore());
+        gameScore.setScore(gameScoreDTO.getScore());
+        gameScore.setMultiplayer(gameScoreDTO.getMultiplayer());
+        gameScore.setGameDate(gameScoreDTO.getGameDate());
+        return gameScore;
+    }
 }
